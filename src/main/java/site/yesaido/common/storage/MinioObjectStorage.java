@@ -88,6 +88,5 @@ public class MinioObjectStorage {
         }
     }
 
-    // 레코드
     public record MinioObjectContent(byte[] bytes, String contentType) {}
 }

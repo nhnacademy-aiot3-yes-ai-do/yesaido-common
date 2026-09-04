@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.time.Duration;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -23,6 +24,7 @@ public class MinioObjectStorage {
                             .object(objectKey)
                             .stream(inputStream, file.getSize(), -1)
                             .contentType(file.getContentType())
+                            .headers(Map.of("Cache-Control", "public, Max-age=1800, immutable"))
                             .build()
             );
         } catch (Exception e) {
